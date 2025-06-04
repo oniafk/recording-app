@@ -1,15 +1,30 @@
 import CompanionCard from "@/components/CompanionCard";
 import CompanionsList from "@/components/CompanionsList";
 import Cta from "@/components/Cta";
+import { SignedIn, SignedOut } from "@clerk/nextjs";
+import { auth } from "@clerk/nextjs/server";
 
-import { Button } from "@/components/ui/button";
 import { recentSessions } from "@/constants";
 import React from "react";
 
-const Page = () => {
+const Page = async () => {
+  const { userId } = await auth();
+
   return (
     <main>
-      <h1 className="text-2xl underline">Popular Companions</h1>
+      <div className="flex items-center justify-between mb-6">
+        <h1 className="text-2xl underline">Popular Companions</h1>
+        <SignedIn>
+          <p className="text-sm text-gray-600">
+            Welcome back! User ID: {userId}
+          </p>
+        </SignedIn>
+        <SignedOut>
+          <p className="text-sm text-gray-600">
+            Sign in to access personalized features
+          </p>
+        </SignedOut>
+      </div>
       <section className="home-section">
         <CompanionCard
           id="123"
