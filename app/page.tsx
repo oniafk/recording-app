@@ -1,11 +1,6 @@
 import CompanionCard from "@/components/CompanionCard";
 import CompanionsList from "@/components/CompanionsList";
 import Cta from "@/components/Cta";
-import { SignedIn, SignedOut } from "@clerk/nextjs";
-import { auth } from "@clerk/nextjs/server";
-
-import { recentSessions } from "@/constants";
-import React from "react";
 import {
   getAllCompanions,
   getRecentSessions,
