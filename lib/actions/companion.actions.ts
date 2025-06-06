@@ -27,7 +27,9 @@ export const getAllCompanions = async ({
 }: GetAllCompanions) => {
   const supabase = createSupabaseClient();
 
-  let query = supabase.from("companions").select();
+  let query = supabase
+    .from("companions")
+    .select("id, name, subject, topic, duration, bookmarked");
 
   if (subject && topic) {
     query = query
